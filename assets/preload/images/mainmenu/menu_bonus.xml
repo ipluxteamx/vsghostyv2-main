@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="menu_bonus.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bonus basic0000" x="0" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0001" x="0" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0002" x="0" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0003" x="420" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0004" x="420" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0005" x="420" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0006" x="840" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0007" x="840" y="0" width="420" height="126"/>
+	<SubTexture name="bonus basic0008" x="840" y="0" width="420" height="126"/>
+	<SubTexture name="bonus white0000" x="1260" y="0" width="494" height="148" frameX="-3" frameY="-3" frameWidth="500" frameHeight="157"/>
+	<SubTexture name="bonus white0001" x="0" y="148" width="496" height="153" frameX="-4" frameY="-2" frameWidth="500" frameHeight="157"/>
+	<SubTexture name="bonus white0002" x="496" y="148" width="500" height="157"/>
+</TextureAtlas>

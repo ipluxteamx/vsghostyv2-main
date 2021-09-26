@@ -1,0 +1,3 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ghostyStage.png"><SubTexture name="ghostyStage0000" x="0" y="0" width="2227" height="1219" frameX="0" frameY="0" frameWidth="2227" frameHeight="1219" />
+</TextureAtlas>

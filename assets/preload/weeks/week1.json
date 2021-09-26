@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["Despair", "ghosty", [146, 113, 253]],
+		["Temper", "ghosty", [146, 113, 253]],
+		["Anger", "ghosty", [146, 113, 253]],
+		["Insanity", "ghosty", [146, 113, 253]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Ghostin' on a Friday Night",
+	"weekBefore": "tutorial",
+	"weekName": "Week 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

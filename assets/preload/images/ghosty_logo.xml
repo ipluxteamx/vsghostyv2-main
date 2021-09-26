@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ghosty_logo.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="logo bumin other edit0000" x="0" y="0" width="753" height="431" frameX="-13" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0001" x="753" y="0" width="795" height="458" frameX="0" frameY="0" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0002" x="1548" y="0" width="779" height="508" frameX="0" frameY="0" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0003" x="2327" y="0" width="717" height="572" frameX="0" frameY="0" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0004" x="3044" y="0" width="716" height="603" frameX="0" frameY="0" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0005" x="0" y="603" width="696" height="585" frameX="-12" frameY="-7" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0006" x="696" y="603" width="696" height="575" frameX="-12" frameY="-7" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0007" x="1392" y="603" width="696" height="559" frameX="-12" frameY="-7" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0008" x="2088" y="603" width="741" height="490" frameX="-12" frameY="-7" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0009" x="2829" y="603" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0010" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0011" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0012" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0013" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0014" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0015" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0016" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0017" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0018" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0019" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0020" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0021" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0022" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0023" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+	<SubTexture name="logo bumin other edit0024" x="0" y="1188" width="751" height="430" frameX="-14" frameY="-10" frameWidth="795" frameHeight="603"/>
+</TextureAtlas>

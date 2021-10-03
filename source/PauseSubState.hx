@@ -18,7 +18,7 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Botplay', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Toggle Practice Mode', 'Botplay', 'Fard', 'Exit to menu'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -169,8 +169,20 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.cpuControlled = !PlayState.cpuControlled;
 					PlayState.usedPractice = true;
 					botplayText.visible = PlayState.cpuControlled;
+				case 'Fard':
+					FlxG.sound.play(Paths.sound('daFard'));
+					PlayState.fardCounter++;
+					if (PlayState.fardCounter == 15) {
+						FlxG.sound.play(Paths.sound('confirmMenu'));
+						PlayState.SONG = Song.loadFromJson("despair", "despair");
+						MusicBeatState.switchState(new PlayState());
+						PlayState.fardCounter = 0;
+						return;
+					}
+
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
+					PlayState.fardCounter = 0;
 					PlayState.seenCutscene = false;
 					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenuState());

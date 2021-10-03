@@ -87,7 +87,7 @@ class BonusState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menuBGMagenta'));
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 

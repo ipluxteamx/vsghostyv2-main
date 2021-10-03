@@ -100,6 +100,21 @@ class MainMenuState extends MusicBeatState
 		logoBl.updateHitbox();
 		add(logoBl);
 
+		var ghosty:FlxSprite;
+
+		ghosty = new FlxSprite(-100, 0);
+
+		ghosty.frames = Paths.getSparrowAtlas('Ghosty_Menu');
+		ghosty.x += 850;
+		ghosty.y += 80;
+		ghosty.scale.set(1.25, 1.25);
+		ghosty.antialiasing = true;
+		ghosty.animation.addByPrefix('idle', 'idle', 24);
+		ghosty.animation.play('idle');
+		ghosty.scrollFactor.set(0);
+		ghosty.updateHitbox();
+		add(ghosty);
+
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;

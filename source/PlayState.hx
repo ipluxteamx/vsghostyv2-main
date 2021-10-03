@@ -217,6 +217,7 @@ class PlayState extends MusicBeatState
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
 	public static var deathCounter:Int = 0;
+	public static var fardCounter:Int = 0;
 
 	public var defaultCamZoom:Float = 1.05;
 
@@ -2862,6 +2863,7 @@ class PlayState extends MusicBeatState
 		updateTime = false;
 
 		deathCounter = 0;
+		fardCounter = 0;
 		seenCutscene = false;
 
 		#if ACHIEVEMENTS_ALLOWED
@@ -3262,8 +3264,8 @@ class PlayState extends MusicBeatState
 					for (i in 0...controlArray.length) {
 						if(controlArray[i] && notesDatas.indexOf(i) == -1) {
 							if(canMiss) {
-								noteMiss(i, true);
-								callOnLuas('noteMissPress', [i]);
+								//noteMiss(i, true);
+								//callOnLuas('noteMissPress', [i]);
 								break;
 							}
 						}
@@ -3297,7 +3299,7 @@ class PlayState extends MusicBeatState
 		});
 	}
 
-	function badNoteHit():Void {
+	/*function badNoteHit():Void {
 		var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
 		for (i in 0...controlArray.length) {
 			if(controlArray[i]) {
@@ -3305,7 +3307,7 @@ class PlayState extends MusicBeatState
 				callOnLuas('noteMissPress', [i]);
 			}
 		}
-	}
+	}*/
 
 	function noteMiss(direction:Int = 1, ?ghostMiss:Bool = false):Void
 	{

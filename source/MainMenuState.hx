@@ -105,8 +105,8 @@ class MainMenuState extends MusicBeatState
 		ghosty = new FlxSprite(-100, 0);
 
 		ghosty.frames = Paths.getSparrowAtlas('Ghosty_Menu');
-		ghosty.x += 850;
-		ghosty.y += 80;
+		ghosty.x += 875;
+		ghosty.y += 125;
 		ghosty.scale.set(1.25, 1.25);
 		ghosty.antialiasing = true;
 		ghosty.animation.addByPrefix('idle', 'idle', 24);

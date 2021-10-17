@@ -160,6 +160,11 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("GALS.ttf"), 18, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
+
+		var tracksSprite:FlxSprite = new FlxSprite(FlxG.width * 1.25, 125).loadGraphic(Paths.image('Menu_Tracks'));
+		tracksSprite.antialiasing = ClientPrefs.globalAntialiasing;
+		add(tracksSprite);
+
 		super.create();
 	}
 

@@ -3897,9 +3897,14 @@ class PlayState extends MusicBeatState
 		for (i in 0...arrayIDs.length) {
 			if(!Achievements.achievementsUnlocked[arrayIDs[i]][1]) {
 				switch(arrayIDs[i]) {
-					case 1 | 2 | 3 | 4 | 5 | 6 | 7:
+					case 1 | 2 | 4 | 5 | 6 | 7:
 						if(isStoryMode && campaignMisses + songMisses < 5 && CoolUtil.difficultyString() == 'CRAZY' &&
 						storyPlaylist.length <= 1 && WeekData.getWeekFileName() == ('week' + arrayIDs[i]) && !changedDifficulty && !usedPractice) {
+							Achievements.unlockAchievement(arrayIDs[i]);
+							return arrayIDs[i];
+						}
+					case 3:
+						if (Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice && PlayState.deathCounter >= 1) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
 						}

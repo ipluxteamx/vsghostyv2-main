@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="3d-blackthing.png">
+    <SubTexture name="3d-blackthing idle0000" x="0" y="0" width="404" height="333" frameX="0" frameY="0" frameWidth="404" frameHeight="333" />
+    <SubTexture name="3d-blackthing down0000" x="404" y="0" width="404" height="333" frameX="0" frameY="0" frameWidth="404" frameHeight="333" />
+    <SubTexture name="3d-blackthing left0000" x="0" y="333" width="404" height="333" frameX="0" frameY="0" frameWidth="404" frameHeight="333" />
+    <SubTexture name="3d-blackthing right0000" x="404" y="333" width="404" height="333" frameX="0" frameY="0" frameWidth="404" frameHeight="333" />
+    <SubTexture name="3d-blackthing up0000" x="0" y="666" width="404" height="333" frameX="0" frameY="0" frameWidth="404" frameHeight="333" />
+</TextureAtlas>

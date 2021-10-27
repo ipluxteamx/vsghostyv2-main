@@ -84,6 +84,8 @@ class FunkinLua {
 		set('startedCountdown', false);
 
 		set('isStoryMode', PlayState.isStoryMode);
+		set('isFreeMode', PlayState.isFreeMode);
+		set('isBonusMode', PlayState.isBonusMode);
 		set('difficulty', PlayState.storyDifficulty);
 		set('weekRaw', PlayState.storyWeek);
 		set('week', WeekData.weeksList[PlayState.storyWeek]);

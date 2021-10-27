@@ -40,6 +40,8 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
+	private var notetolookfor = 0;
+
 	public var noteSplashDisabled:Bool = false;
 	public var noteSplashTexture:String = null;
 	public var noteSplashHue:Float = 0;
@@ -119,6 +121,49 @@ class Note extends FlxSprite
 						animToPlay = 'red';
 				}
 				animation.play(animToPlay + 'Scroll');
+			}
+
+			if (PlayState.SONG.song.toLowerCase() == "ender pearls")
+			{
+				switch (noteData)
+				{
+					case 0:
+						//x += swagWidth * 3;
+						animation.play('greenScroll');
+						//angle += 1;
+					case 1:
+						//x += swagWidth / 1;
+						animation.play('redScroll');
+						//angle -= 1;
+					case 2:
+						//x += swagWidth * 2;
+						animation.play('purpleScroll');
+						//angle += 1;
+					case 3:
+						//x += swagWidth / 2;
+						animation.play('blueScroll');
+						//angle -= 1;
+				}
+				flipY = (Math.round(Math.random()) == 0); //fuck you
+				flipX = (Math.round(Math.random()) == 1);
+			}
+			else
+			{
+				switch (noteData)
+				{
+					case 0:
+						//x += swagWidth * 0;
+						animation.play('purpleScroll');
+					case 1:
+						//x += swagWidth * 1;
+						animation.play('blueScroll');
+					case 2:
+						//x += swagWidth * 2;
+						animation.play('greenScroll');
+					case 3:
+						//x += swagWidth * 3;
+						animation.play('redScroll');
+				}
 			}
 		}
 

@@ -33,6 +33,8 @@ class StageData {
 			{
 				case 'despair' | 'temper' | 'anger' | 'insanity':
 					stage = 'ghostyStage';
+				case 'boss battle' | 'portal':
+					stage = 'oh';
 				/*case 'spookeez' | 'south' | 'monster':
 					stage = 'spooky';
 				case 'pico' | 'blammed' | 'philly' | 'philly-nice':

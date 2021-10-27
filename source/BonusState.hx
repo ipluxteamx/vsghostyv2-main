@@ -81,7 +81,16 @@ class BonusState extends MusicBeatState
 			}
 		}*/
 
-		addSong('dahard', 0, 'ghosty', 0);
+		addSong('dahard', 1, 'ghosty', 0xFFFF78BF);
+		addSong('olddespair', 1, 'ghosty', 0xFFFF78BF);
+		
+		addSong('frenchski', 0, 'ipluxtext', 0xFFFF78BF);
+
+		addSong('spam', 0, 'bf', 0xFFFF78BF);
+		if (FlxG.save.data.cheatFound)
+		{
+			addSong('ender pearls', 1, 'ghosty', 0xFFFF78BF);
+		}
 
 		// LOAD MUSIC
 
@@ -279,6 +288,8 @@ class BonusState extends MusicBeatState
 
 			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
 			PlayState.isStoryMode = false;
+			PlayState.isBonusMode = true;
+			PlayState.isFreeMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.storyWeek = songs[curSelected].week;

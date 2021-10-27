@@ -690,6 +690,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Hide HUD',
 		'Hide Song Length',
 		'Flashing Lights',
+		'Hidden Everything Mode',
 		'Camera Zooms'
 		#if !mobile
 		,'FPS Counter'
@@ -846,6 +847,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 					case 'Flashing Lights':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
+
+					case 'Hidden Everything Mode':
+						ClientPrefs.hiddenEverything = !ClientPrefs.hiddenEverything;
 
 					case 'Violence':
 						ClientPrefs.violence = !ClientPrefs.violence;

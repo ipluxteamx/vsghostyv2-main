@@ -80,6 +80,9 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
+		addSong('boss battle', 0, '3dblackgoop', 0x1000000);
+		addSong('portal', 0, '3dblackgoop', 0x1111111);
+
 		// LOAD MUSIC
 
 		// LOAD CHARACTERS
@@ -281,6 +284,8 @@ class FreeplayState extends MusicBeatState
 
 			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
 			PlayState.isStoryMode = false;
+			PlayState.isBonusMode = false;
+			PlayState.isFreeMode = true;
 			PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.storyWeek = songs[curSelected].week;

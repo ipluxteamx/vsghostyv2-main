@@ -278,6 +278,8 @@ class StoryMenuState extends MusicBeatState
 			// I'm a motherfucking genious
 			PlayState.storyPlaylist = songArray;
 			PlayState.isStoryMode = true;
+			PlayState.isBonusMode = false;
+			PlayState.isFreeMode = false;
 			selectedWeek = true;
 
 			var diffic = CoolUtil.difficultyStuff[curDifficulty][1];

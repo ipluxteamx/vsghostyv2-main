@@ -1,134 +1,134 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-1,
 				-50
 			],
-			"fps": 24,
+			"loop": false,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "3d-blackthing left"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-37,
-				-56
-			],
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "3d-blackthing down"
+			"name": "3d-blackthing left",
+			"indices": []
 		},
 		{
+			"offsets": [
+				-27,
+				-65
+			],
 			"loop": false,
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "3d-blackthing down",
+			"indices": []
+		},
+		{
 			"offsets": [
 				-46,
 				-50
 			],
-			"fps": 24,
+			"loop": false,
 			"anim": "singUP",
-			"indices": [],
-			"name": "3d-blackthing up"
+			"fps": 24,
+			"name": "3d-blackthing up",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-62,
 				-77
 			],
-			"fps": 24,
+			"loop": false,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "3d-blackthing right"
+			"fps": 24,
+			"name": "3d-blackthing right",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-70,
 				-40
 			],
-			"fps": 24,
+			"loop": false,
 			"anim": "idle",
-			"indices": [],
-			"name": "3d-blackthing idle"
+			"fps": 24,
+			"name": "3d-blackthing idle",
+			"indices": []
 		},
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle-loop",
+			"loop": true,
 			"fps": 24,
-			"name": "3d-blackthing idle",
+			"anim": "idle-loop",
 			"indices": [
 				10,
 				11,
 				12,
 				12
-			]
+			],
+			"name": "3d-blackthing idle"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				-9,
 				10
 			],
-			"anim": "singLEFT-loop",
+			"loop": true,
 			"fps": 24,
-			"name": "3d-blackthing left",
+			"anim": "singLEFT-loop",
 			"indices": [
 				12,
 				13,
 				14,
 				15
-			]
+			],
+			"name": "3d-blackthing left"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				27
 			],
-			"anim": "singRIGHT-loop",
+			"loop": true,
 			"fps": 24,
-			"name": "3d-blackthing right",
+			"anim": "singRIGHT-loop",
 			"indices": [
 				15,
 				16,
 				17,
 				18
-			]
+			],
+			"name": "3d-blackthing right"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				-6,
 				50
 			],
-			"anim": "singUP-loop",
+			"loop": true,
 			"fps": 24,
-			"name": "3d-blackthing up",
+			"anim": "singUP-loop",
 			"indices": [
 				56,
 				57,
 				58,
 				59
-			]
+			],
+			"name": "3d-blackthing up"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				90,
 				-50
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "hey",
-			"indices": [],
-			"name": "3d-blackthing up"
+			"fps": 24,
+			"name": "3d-blackthing up",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -137,7 +137,7 @@
 		0,
 		230
 	],
-	"healthicon": "dad",
+	"healthicon": "3dblackgoop",
 	"flip_x": false,
 	"healthbar_colors": [
 		20,
@@ -145,9 +145,9 @@
 		20
 	],
 	"camera_position": [
-		-130,
-		190
+		-260,
+		80
 	],
 	"sing_duration": 6.1,
-	"scale": 1.5
+	"scale": 1.7
 }

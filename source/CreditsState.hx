@@ -24,6 +24,15 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
+		["Ghosty Crew"],
+		['iplux',	        	'iplux',    		"Programmer, Composer, Artist and Creator",         'https://twitter.com/ybngem_',	        0xFF53E52C],
+		['Aret24',	         	'aret24',			"Additionnal help",		           			        'https://twitter.com/DeveloperAret',    0xFF53E52C],
+		['Samy',	      		'samy',				"Co-Artist",					                    'https://twitter.com/Sam0lo',			0xFFF73838],
+		['ZachEP',    	        'zachep',			"Icon Artist",					                    'https://www.youtube.com/channel/UCume1pk0P-96nKjl2h_cEug',		0xFF6475F3],
+		['Thatmomentwhen',    	'thatmomentwhen',	"Charter",					                        'https://www.youtube.com/channel/UC79dRiVcDtpd36BnUHMzosg',		0xFFFF9300],
+		['Jilthr33',         	'jilthr33',		    "Background Artist",				                'https://twitter.com/JliThr33',		0xFF6475F3],
+		['PTZ_guy', 			'ptzguy', 			"Credits Icons (he's cool)",                     	'https://www.youtube.com/channel/UCPvv2Ol5npu02Sp-CGOLmvg', 0xFF53E52C],
+		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],
 		['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',				'https://twitter.com/river_oaken',		0xFFC30085],
@@ -38,15 +47,7 @@ class CreditsState extends MusicBeatState
 		['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",				'https://twitter.com/ninja_muffin99',	0xFFF73838],
 		['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",					'https://twitter.com/PhantomArcade3K',	0xFFFFBB1B],
 		['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",					'https://twitter.com/evilsk8r',			0xFF53E52C],
-		['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",					'https://twitter.com/kawaisprite',		0xFF6475F3],
-		[''],
-		["Ghosty Crew"],
-		['iplux',	        	'ninjamuffin99',    "Programmer, Composer, Artist and Creator",         'https://twitter.com/ybngem_',	        0xFFF73838],
-		['Aret24',	         	'phantomarcade',	"Additionnal help",		           			        'https://twitter.com/DeveloperAret',    0xFFFFBB1B],
-		['Samy',	      		'evilsk8r',			"Co-Artist",					                    'https://twitter.com/Sam0lo',			0xFF53E52C],
-		['ZachEP',    	        'phantomarcade',	"Icon Artist",					                    'https://www.youtube.com/channel/UCume1pk0P-96nKjl2h_cEug',		0xFF6475F3],
-		['Thatmomentwhen',    	'kawaisprite',		"Charter",					                        'https://www.youtube.com/channel/UC79dRiVcDtpd36BnUHMzosg',		0xFF6475F3],
-		['Jilthr33',         	'evilsk8r',		    "Background Artist",				                'https://twitter.com/JliThr33',		0xFF6475F3]
+		['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",					'https://twitter.com/kawaisprite',		0xFF6475F3]
 	];
 
 	var bg:FlxSprite;

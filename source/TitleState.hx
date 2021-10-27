@@ -49,7 +49,7 @@ class TitleState extends MusicBeatState
 	var wackyImage:FlxSprite;
 
 	var easterEggEnabled:Bool = true; //Disable this to hide the easter egg
-	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.B, FlxKey.B]; //bb stands for bbpanzu cuz he wanted this lmao
+	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.D, FlxKey.E, FlxKey.V, FlxKey.T, FlxKey.E, FlxKey.A, FlxKey.M];
 	var lastKeysPressed:Array<FlxKey> = [];
 
 	override public function create():Void
@@ -352,7 +352,7 @@ class TitleState extends MusicBeatState
 								function(twn:FlxTween) {
 									FlxTransitionableState.skipNextTransIn = true;
 									FlxTransitionableState.skipNextTransOut = true;
-									MusicBeatState.switchState(new TitleState());
+									MusicBeatState.switchState(new LolState());
 								}
 							});
 							lastKeysPressed = [];
@@ -444,14 +444,13 @@ class TitleState extends MusicBeatState
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
-				case 5:
-					createCoolText(['But also'], -45);
 				case 7:
 					//logoSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
-					addMoreText('Aret24', 45);
+					createCoolText(['Aret24'], 45);
 					addMoreText('Samy', 45);
 					addMoreText('Jilthr33', 45);
+					addMoreText('PTZ_guy', 45);
 				case 8:
 					deleteCoolText();
 					//logoSpr.visible = false;

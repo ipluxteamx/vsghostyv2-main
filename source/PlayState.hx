@@ -306,6 +306,8 @@ class PlayState extends MusicBeatState
 			{
 				case 'despair' | 'temper' | 'anger' | 'insanity':
 					curStage = 'ghostyStage';
+				case 'another it' | 'happening':
+					curStage = 'ghostyHouse';
 				case 'boss battle' | 'portal':
 					curStage = 'oh';
 				/*case 'spookeez' | 'south' | 'monster':
@@ -612,9 +614,13 @@ class PlayState extends MusicBeatState
 					add(bg);
 				}*/
 			case 'ghostyStage': //Week 1
-				var bg:BGSprite = new BGSprite('ghostyStage', -600, -200, 0.9, 0.9);
+				var bg:BGSprite = new BGSprite('ghostyStage', -600, -200, 1, 1);
 				add(bg);
-			case 'oh': //Week 2
+			case 'ghostyHouse': //Week 2 1
+				var bg:BGSprite = new BGSprite('Ghostys_house_or_somethin', -600, -200, 0.9, 0.9);
+				bg.scale.set(3, 3);
+				add(bg);
+			case 'oh': //Week 2 2
 				var bg:BGSprite = new BGSprite('oh', -600, -200, 0.9, 0.9);
 				bg.scale.set(3, 3);
 				add(bg);
@@ -1019,9 +1025,12 @@ class PlayState extends MusicBeatState
 							}
 						});
 					});
-				case 'senpai' | 'roses' | 'thorns':
+				/*case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
-					schoolIntro(doof);
+					schoolIntro(doof);*/
+
+				case 'despair':
+					startDialogue(dialogueJson);
 
 				default:
 					startCountdown();
@@ -1692,19 +1701,19 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.addByPrefix('static', 'arrowLEFT');
 							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
 							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
-							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.bounceInOut, loopDelay: 0});
+							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.circInOut, loopDelay: 0});
 						case 2:
 							babyArrow.x += Note.swagWidth * 2;
 							babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
 							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
 							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
-							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.bounceInOut, loopDelay: 0});
+							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.elasticInOut, loopDelay: 0});
 						case 3:
 							babyArrow.x += Note.swagWidth * 3;
 							babyArrow.animation.addByPrefix('static', 'arrowUP');
 							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
 							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
-							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.bounceInOut, loopDelay: 0});
+							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.cubeInOut, loopDelay: 0});
 					}
 				} else {
 					switch (Math.abs(i))
@@ -2095,8 +2104,8 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.cheatFound = true;
 				return;
 				// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
-			} else if (curSong.toLowerCase() == 'ender-pearls') {
-
+			} else if (curSong.toLowerCase() == 'ender-pearls' || curSong.toLowerCase() == 'ender pearls') {
+				health = 0;
 				return;
 			} else {
 				persistentUpdate = false;
@@ -2337,29 +2346,37 @@ class PlayState extends MusicBeatState
 								animToPlay = 'singLEFT';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
+									FlxG.camera.shake (0.01, 0.01);
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
+									FlxG.camera.shake (0.01, 0.01);
 								}
 							case 1:
 								animToPlay = 'singDOWN';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
+									FlxG.camera.shake (0.02, 0.02);
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
+									FlxG.camera.shake (0.02, 0.02);
 								}
 							case 2:
 								animToPlay = 'singUP';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
+									FlxG.camera.shake (0.025, 0.025);
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
+									FlxG.camera.shake (0.025, 0.025);
 								}
 							case 3:
 								animToPlay = 'singRIGHT';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
+									FlxG.camera.shake (0.03, 0.03);
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
+									FlxG.camera.shake (0.03, 0.03);
 								}
 						}
 						dad.playAnim(animToPlay + altAnim, true);
@@ -3493,6 +3510,9 @@ class PlayState extends MusicBeatState
 						}
 					}
 					return;
+				case 'Heal Note':
+					health += 1;
+					FlxG.sound.play(Paths.sound('secretSound'), 0.35);
 			}
 
 			if (!note.isSustainNote)
@@ -4006,7 +4026,7 @@ class PlayState extends MusicBeatState
 							return arrayIDs[i];
 						}
 					case 3:
-						if (Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice && PlayState.deathCounter >= 1) {
+						if (Paths.formatToSongPath(SONG.song) == 'tutorial' && !usedPractice && PlayState.deathCounter >= 1) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
 						}
@@ -4048,7 +4068,7 @@ class PlayState extends MusicBeatState
 							}
 						}
 					case 14:
-						if(/*ClientPrefs.framerate <= 60 &&*/ ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing && !ClientPrefs.imagesPersist) {
+						if(ClientPrefs.framerate < 30 && ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing && !ClientPrefs.imagesPersist) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
 						}
@@ -4058,7 +4078,7 @@ class PlayState extends MusicBeatState
 							return arrayIDs[i];
 						}
 					case 16:
-						if(isChartingState) {
+						if(FlxG.save.data.cheatFound) {
 							Achievements.unlockAchievement(arrayIDs[i]);
 							return arrayIDs[i];
 						}

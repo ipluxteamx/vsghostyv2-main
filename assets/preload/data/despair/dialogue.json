@@ -1,0 +1,102 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.055,
+			"portrait": "ghosty",
+			"boxState": "angry",
+			"expression": "talk",
+			"text": "WHAT THE FUCK ARE YOU???"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "beep bop"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Oh, it is the little baby!"
+		},
+		{
+			"speed": 0.04,
+			"portrait": "bf",
+			"boxState": "angry",
+			"expression": "talk",
+			"text": "BEEP BAP BOOP SKDOOP BITCH"
+		},
+		{
+			"speed": 0.115,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Yep."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "You want a rap battle, is that it?"
+		},
+		{
+			"speed": 0.065,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "how did you know i was gonna ask that? i mean beep boop bap"
+		},
+		{
+			"speed": 0.135,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I know everything little guy."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "a"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I have been here long before you."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "coolswag"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Anyways, let us get it on, shall we?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "beep bop skdap bep"
+		},
+		{
+			"speed": 0.015,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "What did you say about my mom tho"
+		}
+	]
+}

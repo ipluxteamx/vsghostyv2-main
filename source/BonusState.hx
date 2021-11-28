@@ -83,14 +83,17 @@ class BonusState extends MusicBeatState
 
 		addSong('dahard', 1, 'ghosty', 0xFFFF78BF);
 		addSong('olddespair', 1, 'ghosty', 0xFFFF78BF);
-		
-		addSong('frenchski', 0, 'ipluxtext', 0xFFFF78BF);
+
+		//addSong('frenchski', 0, 'ipluxtext', 0xFFFF78BF);
 
 		addSong('spam', 0, 'bf', 0xFFFF78BF);
 		if (FlxG.save.data.cheatFound)
 		{
 			addSong('ender pearls', 1, 'ghosty', 0xFFFF78BF);
 		}
+
+		addSong('smile', 1, 'ghosty', 0xFFFF78BF);
+		addSong('cocaine', 0, 'bf', 0xFFFF78BF);
 
 		// LOAD MUSIC
 

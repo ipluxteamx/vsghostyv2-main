@@ -27,14 +27,14 @@ class Achievements {
 		["Just the Two of Us",			"Finish a Song pressing only two keys.",				false],
 		["Toaster Gamer",				"Have you tried to run the game on a toaster?",			false],
 		["Debugger",					"Beat the \"Test\" Stage from the Chart Editor.",		 true],
-		["Ender Pearls",				"Modify any songs chart with the debug mode",			 true]
+		["Ender Pearls",				"Discover the secret cheating song",	         		 true]
 	];
 
 	public static var achievementsUnlocked:Array<Dynamic> = [ //Save string and Achievement tag + is it unlocked?
 		['friday_night_play', false],	//0
 		['week1_nomiss', false],		//1
 		['week2_nomiss', false],		//2
-		['week3_nomiss', false],	    //3
+		['die_tutorial', false],	    //3
 		['week4_nomiss', false],	    //4
 		['week5_nomiss', false],	    //5
 		['week6_nomiss', false],		//6
@@ -47,7 +47,7 @@ class Achievements {
 		['two_keys', false],			//13
 		['toastie', false],				//14
 		['debugger', false], 			//15
-		['ender_pearl', false]			//16
+		['ender_pearls', false]			//16
 	];
 
 	public static var henchmenDeath:Int = 0;

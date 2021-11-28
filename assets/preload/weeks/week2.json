@@ -1,0 +1,24 @@
+{
+	"songs": [
+		["Another It", "blake", [200, 200, 200]],
+		["Happening", "blake", [150, 150, 150]],
+		["Boss Battle", "3dblackgoop", [20, 20, 20]],
+		["Portal", "3dblackgoop", [10, 10, 10]],
+        ["Remorse", "bf", [50, 50, 50]]
+	],
+
+	"weekCharacters": [
+		"blake",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "New Dimension",
+	"weekBefore": "week1",
+	"weekName": "Week 2",
+	"startUnlocked": false,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

@@ -73,6 +73,20 @@ class Note extends FlxSprite
 					colorSwap.hue = 0;
 					colorSwap.saturation = 0;
 					colorSwap.brightness = 0;
+				case 'Heal Note':
+					ignoreNote = true;
+					reloadNote('HEAL');
+					noteSplashTexture = 'HEALnoteSplashes';
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
+				/*case 'Warning Note':
+					ignoreNote = true;
+					reloadNote('HEAL');
+					noteSplashTexture = 'HEALnoteSplashes';
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;*/
 			}
 			noteType = value;
 		}

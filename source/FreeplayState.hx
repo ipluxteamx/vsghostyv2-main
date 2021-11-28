@@ -80,8 +80,9 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		addSong('boss battle', 0, '3dblackgoop', 0x1000000);
+		/*addSong('boss battle', 0, '3dblackgoop', 0x1000000);
 		addSong('portal', 0, '3dblackgoop', 0x1111111);
+		addSong('remorse', 0, 'bf', 0x2222222);*/
 
 		// LOAD MUSIC
 

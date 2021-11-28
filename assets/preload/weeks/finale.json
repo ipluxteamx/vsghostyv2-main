@@ -1,0 +1,20 @@
+{
+	"songs": [
+		["Confronting Yourself", "impostorsus", [50, 50, 50]]
+	],
+
+	"weekCharacters": [
+		"bf",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Impostor",
+	"weekBefore": "week2",
+	"weekName": "Finale",
+	"startUnlocked": false,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

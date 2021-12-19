@@ -163,7 +163,7 @@ class Note extends FlxSprite
 				}
 				flipY = (Math.round(Math.random()) == 0); //fuck you
 				flipX = (Math.round(Math.random()) == 1);
-			} else if (PlayState.SONG.song.toLowerCase() == "tachophobia") {
+			} else if (PlayState.SONG.song.toLowerCase() == "tachophobia" || PlayState.SONG.song.toLowerCase() == "uh oh") {
 				switch (noteData)
 				{
 					case 0:

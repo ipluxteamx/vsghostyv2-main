@@ -887,7 +887,7 @@ class PlayState extends MusicBeatState
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
-		if (SONG.song.toLowerCase() == 'ender pearls') {
+		if (SONG.song.toLowerCase() == 'ender pearls' || SONG.song.toLowerCase() == "uh oh") {
 			health = 2;
 		} else {
 			health = 1;
@@ -2132,12 +2132,19 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.cheatFound = true;
 				return;
 				// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
+			} else if (curSong.toLowerCase() == 'ender pearls')
+					{
+						PlayState.SONG = Song.loadFromJson("uh oh", "uh oh"); // you dun fucked up
+						FlxG.switchState(new PlayState());
+						FlxG.save.data.newCheatFound = true;
+						return;
+						// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
 			} else if (curSong.toLowerCase() == 'cocaine') {
 				PlayState.SONG = Song.loadFromJson("tachophobia", "tachophobia"); // you dun fucked up again bih
 				FlxG.switchState(new PlayState());
 				FlxG.save.data.bambCheatFound = true;
 				return;
-		 	} else if (curSong.toLowerCase() == 'ender-pearls' || curSong.toLowerCase() == 'ender pearls' || curSong.toLowerCase() == 'tachophobia') {
+		 	} else if (curSong.toLowerCase() == 'uh oh' || curSong.toLowerCase() == 'tachophobia') {
 				health = 0;
 				return;
 			} else {
@@ -2386,6 +2393,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
 									FlxG.camera.shake (0.05, 0.05);
+								} else if (SONG.song.toLowerCase() == 'uh oh') {
+									health -= 0.015;
+									FlxG.camera.shake (0.025, 0.025);
 								}
 							case 1:
 								animToPlay = 'singDOWN';
@@ -2395,6 +2405,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
 									FlxG.camera.shake (0.02, 0.02);
+								} else if (SONG.song.toLowerCase() == 'uh oh') {
+									health -= 0.015;
+									FlxG.camera.shake (0.025, 0.025);
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
 									FlxG.camera.shake (0.05, 0.05);
@@ -2405,6 +2418,9 @@ class PlayState extends MusicBeatState
 									health -= 0.01;
 									FlxG.camera.shake (0.025, 0.025);
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
+									health -= 0.015;
+									FlxG.camera.shake (0.025, 0.025);
+								} else if (SONG.song.toLowerCase() == 'uh oh') {
 									health -= 0.015;
 									FlxG.camera.shake (0.025, 0.025);
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
@@ -2419,6 +2435,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
 									FlxG.camera.shake (0.03, 0.03);
+								} else if (SONG.song.toLowerCase() == 'uh oh') {
+									health -= 0.015;
+									FlxG.camera.shake (0.025, 0.025);
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
 									FlxG.camera.shake (0.05, 0.05);

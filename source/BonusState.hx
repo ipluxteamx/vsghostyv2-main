@@ -91,7 +91,11 @@ class BonusState extends MusicBeatState
 		{
 			addSong('ender pearls', 1, 'ghosty', 0xFFFF78BF);
 		}
-
+		if (FlxG.save.data.newCheatFound)
+		{
+			addSong('uh oh', 1, 'ghosty', 0xFFFF78BF);
+		}
+	
 		addSong('smile', 1, 'ghosty', 0xFFFF78BF);
 		addSong('cocaine', 0, 'bf', 0xFFFF78BF);
 		if (FlxG.save.data.bambCheatFound)

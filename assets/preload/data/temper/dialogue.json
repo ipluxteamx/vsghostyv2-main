@@ -1,0 +1,46 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.03,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Can you, uh, go now please"
+		},
+		{
+			"speed": 0.035,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "beep bop no bithc"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "ghosty",
+			"boxState": "angry",
+			"expression": "talk",
+			"text": "Please, I BEG YOU!"
+		},
+		{
+			"speed": 0.09,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "bep"
+		},
+		{
+			"speed": 0.04,
+			"portrait": "ghosty",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "You are a genuine dick sucker"
+		},
+		{
+			"speed": 0.025,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "im doing your mom"
+		}
+	]
+}

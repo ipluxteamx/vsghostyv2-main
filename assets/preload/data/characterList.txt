@@ -15,3 +15,5 @@ daspook
 ghostyweak
 ghostycorrupt
 impostorsus
+redacted-bambi
+redacted-bambi-playable

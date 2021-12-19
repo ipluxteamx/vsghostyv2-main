@@ -120,7 +120,7 @@ class Note extends FlxSprite
 			colorSwap = new ColorSwap();
 			shader = colorSwap.shader;
 
-			x += swagWidth * (noteData % 4);
+			x += swagWidth * (noteData % 6);
 			if(!isSustainNote) { //Doing this 'if' check to fix the warnings on Senpai songs
 				var animToPlay:String = '';
 				switch (noteData % 4)
@@ -133,6 +133,9 @@ class Note extends FlxSprite
 						animToPlay = 'green';
 					case 3:
 						animToPlay = 'red';
+
+					flipY = (Math.round(Math.random()) == 0); //fuck you
+					flipX = (Math.round(Math.random()) == 1);
 				}
 				animation.play(animToPlay + 'Scroll');
 			}
@@ -160,9 +163,29 @@ class Note extends FlxSprite
 				}
 				flipY = (Math.round(Math.random()) == 0); //fuck you
 				flipX = (Math.round(Math.random()) == 1);
-			}
-			else
-			{
+			} else if (PlayState.SONG.song.toLowerCase() == "tachophobia") {
+				switch (noteData)
+				{
+					case 0:
+						//x += swagWidth * 3;
+						animation.play('greenScroll');
+						//angle += 1;
+					case 1:
+						//x += swagWidth / 1;
+						animation.play('redScroll');
+						//angle -= 1;
+					case 2:
+						//x += swagWidth * 2;
+						animation.play('purpleScroll');
+						//angle += 1;
+					case 3:
+						//x += swagWidth / 2;
+						animation.play('blueScroll');
+						//angle -= 1;
+				}
+				flipY = (Math.round(Math.random()) == 1); //fuck you
+				flipX = (Math.round(Math.random()) == 1);
+			} else {
 				switch (noteData)
 				{
 					case 0:

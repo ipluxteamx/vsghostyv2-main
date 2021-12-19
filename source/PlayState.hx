@@ -1715,6 +1715,34 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
 							FlxTween.tween(babyArrow, {x: babyArrow.x + 20, y: babyArrow.y + 40}, 1.5, {type : FlxTweenType.PINGPONG, ease: FlxEase.cubeInOut, loopDelay: 0});
 					}
+				/*} else if (PlayState.SONG.song.toLowerCase() == "tachophobia") {
+					switch (Math.abs(i))
+					{
+						case 0:
+							babyArrow.x += Note.swagWidth * 1;
+							babyArrow.animation.addByPrefix('static', 'arrowDOWN');
+							babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							FlxTween.tween(babyArrow, {x: babyArrow.x, y: babyArrow.y, "scale.x": 2}, 2.0, {type : FlxTweenType.LOOPING, ease: FlxEase.bounceInOut, loopDelay: 0});
+						case 1:
+							babyArrow.x += Note.swagWidth * 3;
+							babyArrow.animation.addByPrefix('static', 'arrowLEFT');
+							babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							FlxTween.tween(babyArrow, {x: babyArrow.x, y: babyArrow.y + 1, "scale.x": 0.5}, 1.5, {type : FlxTweenType.LOOPING, ease: FlxEase.circInOut, loopDelay: 0});
+						case 2:
+							babyArrow.x += Note.swagWidth * 2;
+							babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
+							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							FlxTween.tween(babyArrow, {x: babyArrow.x, y: babyArrow.y, "scale.x": 2}, 1.0, {type : FlxTweenType.LOOPING, ease: FlxEase.elasticInOut, loopDelay: 0});
+						case 3:
+							babyArrow.x += Note.swagWidth * 0;
+							babyArrow.animation.addByPrefix('static', 'arrowUP');
+							babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+							babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							FlxTween.tween(babyArrow, {x: babyArrow.x, y: babyArrow.y + 1, "scale.x": 1}, 0.5, {type : FlxTweenType.LOOPING, ease: FlxEase.cubeInOut, loopDelay: 0});
+					}*/
 				} else {
 					switch (Math.abs(i))
 					{
@@ -2104,7 +2132,12 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.cheatFound = true;
 				return;
 				// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
-			} else if (curSong.toLowerCase() == 'ender-pearls' || curSong.toLowerCase() == 'ender pearls') {
+			} else if (curSong.toLowerCase() == 'cocaine') {
+				PlayState.SONG = Song.loadFromJson("tachophobia", "tachophobia"); // you dun fucked up again bih
+				FlxG.switchState(new PlayState());
+				FlxG.save.data.bambCheatFound = true;
+				return;
+		 	} else if (curSong.toLowerCase() == 'ender-pearls' || curSong.toLowerCase() == 'ender pearls' || curSong.toLowerCase() == 'tachophobia') {
 				health = 0;
 				return;
 			} else {
@@ -2350,6 +2383,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
 									FlxG.camera.shake (0.01, 0.01);
+								} else if (SONG.song.toLowerCase() == 'tachophobia') {
+									health -= 0.015;
+									FlxG.camera.shake (0.05, 0.05);
 								}
 							case 1:
 								animToPlay = 'singDOWN';
@@ -2359,6 +2395,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
 									FlxG.camera.shake (0.02, 0.02);
+								} else if (SONG.song.toLowerCase() == 'tachophobia') {
+									health -= 0.015;
+									FlxG.camera.shake (0.05, 0.05);
 								}
 							case 2:
 								animToPlay = 'singUP';
@@ -2368,6 +2407,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
 									FlxG.camera.shake (0.025, 0.025);
+								} else if (SONG.song.toLowerCase() == 'tachophobia') {
+									health -= 0.015;
+									FlxG.camera.shake (0.05, 0.05);
 								}
 							case 3:
 								animToPlay = 'singRIGHT';
@@ -2377,6 +2419,9 @@ class PlayState extends MusicBeatState
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
 									FlxG.camera.shake (0.03, 0.03);
+								} else if (SONG.song.toLowerCase() == 'tachophobia') {
+									health -= 0.015;
+									FlxG.camera.shake (0.05, 0.05);
 								}
 						}
 						dad.playAnim(animToPlay + altAnim, true);

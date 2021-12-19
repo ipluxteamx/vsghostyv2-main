@@ -94,6 +94,10 @@ class BonusState extends MusicBeatState
 
 		addSong('smile', 1, 'ghosty', 0xFFFF78BF);
 		addSong('cocaine', 0, 'bf', 0xFFFF78BF);
+		if (FlxG.save.data.bambCheatFound)
+		{
+			addSong('tachophobia', 69, 'redacted-bambi', 0xFFFF78BF);
+		}
 
 		// LOAD MUSIC
 

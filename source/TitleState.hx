@@ -49,7 +49,7 @@ class TitleState extends MusicBeatState
 	var wackyImage:FlxSprite;
 
 	var easterEggEnabled:Bool = true; //Disable this to hide the easter egg
-	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.D, FlxKey.E, FlxKey.V, FlxKey.T, FlxKey.E, FlxKey.A, FlxKey.M];
+	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.B, FlxKey.A, FlxKey.M, FlxKey.B, FlxKey.I];
 	var lastKeysPressed:Array<FlxKey> = [];
 
 	override public function create():Void
@@ -352,7 +352,8 @@ class TitleState extends MusicBeatState
 								function(twn:FlxTween) {
 									FlxTransitionableState.skipNextTransIn = true;
 									FlxTransitionableState.skipNextTransOut = true;
-									MusicBeatState.switchState(new LolState());
+									PlayState.SONG = Song.loadFromJson("tachophobia", "tachophobia".toLowerCase());
+									MusicBeatState.switchState(new PlayState());
 								}
 							});
 							lastKeysPressed = [];

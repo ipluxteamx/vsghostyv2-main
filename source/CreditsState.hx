@@ -33,6 +33,7 @@ class CreditsState extends MusicBeatState
 		['Jilthr33',         	'jilthr33',		    "Background Artist",				                'https://twitter.com/JliThr33',		0xFF6475F3],
 		['PTZ_guy', 			'ptzguy', 			"Credits Icons (he's cool)",                     	'https://www.youtube.com/channel/UCPvv2Ol5npu02Sp-CGOLmvg', 0xFF53E52C],
 		['Saster', 				'', 			    "Made the original Confronting Yourself",           'https://www.youtube.com/channel/UCC4CkqOAwulRil3BEK9L3Mg', 0xFFE01F32],
+		['Denger', 				'denger', 			"Playtester and Artist for Cocaine",           		'https://www.youtube.com/channel/UCFWUX8iHo_n6hpg28aANneQ', 0xFF53E52C],
 		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],

@@ -354,8 +354,7 @@ class TitleState extends MusicBeatState
 								function(twn:FlxTween) {
 									FlxTransitionableState.skipNextTransIn = true;
 									FlxTransitionableState.skipNextTransOut = true;
-									PlayState.SONG = Song.loadFromJson("tachophobia", "tachophobia".toLowerCase());
-									MusicBeatState.switchState(new PlayState());
+									//MusicBeatState.switchState(new L());
 								}
 							});
 							lastKeysPressed = [];
@@ -420,15 +419,16 @@ class TitleState extends MusicBeatState
 
 		if(logoBl != null) 
 			logoBl.animation.play('bump');
+			FlxTween.tween(logoBl, {'scale.x': 0.95, 'scale.y': 0.95}, 0.1, {ease: FlxEase.bounceIn});
 
-		if(gfDance != null) {
+		/*if(gfDance != null) {
 			danceLeft = !danceLeft;
 
 			if (danceLeft)
 				gfDance.animation.play('danceRight');
 			else
 				gfDance.animation.play('danceLeft');
-		}
+		}*/
 
 		if(!closedState) {
 			switch (curBeat)

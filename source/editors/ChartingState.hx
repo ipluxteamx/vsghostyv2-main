@@ -279,7 +279,7 @@ class ChartingState extends MusicBeatState
 		addChartingUI();
 		updateHeads();
 		updateWaveform();
-		UI_box.selected_tab = 4;
+		//UI_box.selected_tab = 4;
 
 		add(curRenderedSustains);
 		add(curRenderedNotes);
@@ -827,6 +827,7 @@ class ChartingState extends MusicBeatState
 	var metronome:FlxUICheckBox;
 	var metronomeStepper:FlxUINumericStepper;
 	var metronomeOffsetStepper:FlxUINumericStepper;
+	var disableAutoScrolling:FlxUICheckBox;
 	#if desktop
 	var waveformEnabled:FlxUICheckBox;
 	var waveformUseInstrumental:FlxUICheckBox;
@@ -888,6 +889,8 @@ class ChartingState extends MusicBeatState
 		metronomeStepper = new FlxUINumericStepper(15, 55, 5, _song.bpm, 1, 1500, 1);
 		metronomeOffsetStepper = new FlxUINumericStepper(metronomeStepper.x + 100, metronomeStepper.y, 25, 0, 0, 1000, 1);
 
+		disableAutoScrolling = new FlxUICheckBox(metronome.x + 120, metronome.y, null, null, "Disable Autoscroll (Not Recommended)", 120);
+
 		instVolume = new FlxUINumericStepper(metronomeStepper.x, 270, 0.1, 1, 0, 1, 1);
 		instVolume.value = FlxG.sound.music.volume;
 		instVolume.name = 'inst_volume';
@@ -902,6 +905,7 @@ class ChartingState extends MusicBeatState
 		tab_group_chart.add(new FlxText(voicesVolume.x, voicesVolume.y - 15, 0, 'Voices Volume'));
 		tab_group_chart.add(metronomeStepper);
 		tab_group_chart.add(metronomeOffsetStepper);
+		tab_group_chart.add(disableAutoScrolling);
 		#if desktop
 		tab_group_chart.add(waveformEnabled);
 		tab_group_chart.add(waveformUseInstrumental);
@@ -1110,6 +1114,7 @@ class ChartingState extends MusicBeatState
 		_song.song = UI_songTitle.text;
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) / curZoom % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
+		
 		camPos.y = strumLine.y;
 
 		if (curBeat % 4 == 0 && curStep >= 16 * (curSection + 1))
@@ -1126,6 +1131,24 @@ class ChartingState extends MusicBeatState
 			changeSection(curSection + 1, false);
 		} else if(strumLine.y < -10) {
 			changeSection(curSection - 1, false);
+		}
+
+		if(!disableAutoScrolling.checked) {
+			if (strumLine.y > (gridBG.height / 2))
+			{
+				//trace(curStep);
+				//trace((_song.notes[curSection].lengthInSteps) * (curSection + 1));
+				//trace('DUMBSHIT');
+
+				if (_song.notes[curSection + 1] == null)
+				{
+					addSection();
+				}
+
+				changeSection(curSection + 1, false);
+			} else if(strumLine.y < -10) {
+				changeSection(curSection - 1, false);
+			}
 		}
 
 		FlxG.watch.addQuick('daBeat', curBeat);

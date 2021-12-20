@@ -419,7 +419,7 @@ class TitleState extends MusicBeatState
 
 		if(logoBl != null) 
 			logoBl.animation.play('bump');
-			FlxTween.tween(logoBl, {'scale.x': 0.95, 'scale.y': 0.95}, 0.1, {ease: FlxEase.bounceIn});
+			//FlxTween.tween(logoBl, {'scale.x': 0.95, 'scale.y': 0.95}, 0.15, {ease: FlxEase.bounceIn});
 
 		/*if(gfDance != null) {
 			danceLeft = !danceLeft;

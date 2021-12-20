@@ -37,6 +37,7 @@ import flixel.util.FlxSort;
 import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
 import haxe.Json;
+import openfl.filters.ShaderFilter;
 import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
@@ -625,10 +626,14 @@ class PlayState extends MusicBeatState
 					var bg:BGSprite = new BGSprite('oh', -600, -200, 0.9, 0.9);
 					bg.scale.set(3, 3);
 					add(bg);
-					if(!ClientPrefs.lowQuality) { //Does this even do something?
-						var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
-						var waveEffectFG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 5, 2);
-					}
+					//if(!ClientPrefs.lowQuality) {
+						// below code assumes shaders are always enabled which is bad
+						var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
+						testshader.waveAmplitude = 0.1;
+						testshader.waveFrequency = 5;
+						testshader.waveSpeed = 2;
+						bg.shader = testshader.shader;
+					//}
 					/*var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 					testshader.waveAmplitude = 0.1;
 					testshader.waveFrequency = 5;
@@ -1964,6 +1969,15 @@ class PlayState extends MusicBeatState
 		}
 
 		callOnLuas('onUpdate', [elapsed]);
+
+		if (curbg != null)
+		{
+			if (curbg.active) // only the oh background is active
+			{
+				var shad = cast(curbg.shader, Shaders.GlitchShader);
+				shad.uTime.value[0] += elapsed;
+			}
+		}
 
 		switch (curStage)
 		{

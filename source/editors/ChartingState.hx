@@ -1133,7 +1133,7 @@ class ChartingState extends MusicBeatState
 			changeSection(curSection - 1, false);
 		}
 
-		if(!disableAutoScrolling.checked) {
+		if(disableAutoScrolling.checked) {
 			if (strumLine.y > (gridBG.height / 2))
 			{
 				//trace(curStep);

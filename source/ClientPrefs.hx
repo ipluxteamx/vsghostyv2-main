@@ -27,17 +27,18 @@ class ClientPrefs {
 	public static var ghostTapping:Bool = true;
 	public static var hideTime:Bool = false;
 	public static var maxOptimization:Bool = false;
+	public static var shakeOnMiss:Bool = false;
 
 	public static var defaultKeys:Array<FlxKey> = [
-		A, LEFT,			//Note Left
-		S, DOWN,			//Note Down
-		W, UP,				//Note Up
-		D, RIGHT,			//Note Right
+		D, LEFT,			//Note Left
+		F, DOWN,			//Note Down
+		J, UP,				//Note Up
+		K, RIGHT,			//Note Right
 
-		A, LEFT,			//UI Left
-		S, DOWN,			//UI Down
-		W, UP,				//UI Up
-		D, RIGHT,			//UI Right
+		D, LEFT,			//UI Left
+		F, DOWN,			//UI Down
+		J, UP,				//UI Up
+		K, RIGHT,			//UI Right
 
 		R, NONE,			//Reset
 		SPACE, ENTER,		//Accept

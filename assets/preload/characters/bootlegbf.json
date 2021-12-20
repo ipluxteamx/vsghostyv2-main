@@ -166,7 +166,7 @@
 			"indices": []
 		}
 	],
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/BOOTLEGBF",
 	"position": [
 		0,

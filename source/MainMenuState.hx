@@ -24,7 +24,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.4'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.45???'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -59,6 +59,7 @@ class MainMenuState extends MusicBeatState
 
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
@@ -76,9 +77,9 @@ class MainMenuState extends MusicBeatState
 		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();
-		magenta.visible = false;
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
+		magenta.visible = false;
 		add(magenta);
 		// magenta.scrollFactor.set();
 
@@ -225,7 +226,12 @@ class MainMenuState extends MusicBeatState
 					{
 						if (curSelected != spr.ID)
 						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
+							FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(spr, {alpha: 0}, 0.3, {
 								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)
 								{

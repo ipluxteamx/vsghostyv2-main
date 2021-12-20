@@ -180,7 +180,7 @@
 			"name": "BF NOTE DOWN0"
 		}
 	],
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/8bitBf",
 	"position": [
 		0,

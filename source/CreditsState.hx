@@ -34,6 +34,7 @@ class CreditsState extends MusicBeatState
 		['PTZ_guy', 			'ptzguy', 			"Credits Icons (he's cool)",                     	'https://www.youtube.com/channel/UCPvv2Ol5npu02Sp-CGOLmvg', 0xFF53E52C],
 		['Saster', 				'', 			    "Made the original Confronting Yourself",           'https://www.youtube.com/channel/UCC4CkqOAwulRil3BEK9L3Mg', 0xFFE01F32],
 		['Denger', 				'denger', 			"Playtester and Artist for Cocaine",           		'https://www.youtube.com/channel/UCFWUX8iHo_n6hpg28aANneQ', 0xFF53E52C],
+		['Source Animaker', 	'', 				"Made the cool ass 3D BF and GF sprites",           'https://gamebanana.com/members/1839968', 0xFFFF9300],
 		[''],
 		['Psych Engine Team'],
 		['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',					'https://twitter.com/Shadow_Mario_',	0xFFFFDD33],

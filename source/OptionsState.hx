@@ -681,6 +681,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		#if !html5
 		'Framerate', //Apparently 120FPS isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		#end
+		'Max Optimization',
 		'GAMEPLAY',
 		'Downscroll',
 		'Middlescroll',
@@ -690,7 +691,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Hide HUD',
 		'Hide Song Length',
 		'Flashing Lights',
-		'Hidden Everything Mode',
 		'Camera Zooms'
 		#if !mobile
 		,'FPS Counter'
@@ -848,8 +848,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Flashing Lights':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
 
-					case 'Hidden Everything Mode':
-						ClientPrefs.hiddenEverything = !ClientPrefs.hiddenEverything;
+					case 'Max Optimization':
+						ClientPrefs.maxOptimization = !ClientPrefs.maxOptimization;
 
 					case 'Violence':
 						ClientPrefs.violence = !ClientPrefs.violence;
@@ -951,6 +951,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.";
 			case 'Anti-Aliasing':
 				daText = "If unchecked, disables anti-aliasing, increases performance\nat the cost of the graphics not looking as smooth.";
+			case 'Max Optimization':
+				daText = "If checked, hides everything except the UI";
 			case 'Downscroll':
 				daText = "If checked, notes go Down instead of Up, simple enough.";
 			case 'Middlescroll':
@@ -1036,6 +1038,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.noteSplashes;
 					case 'Flashing Lights':
 						daValue = ClientPrefs.flashing;
+					case 'Max Optimization':
+						daValue = ClientPrefs.maxOptimization;
 					case 'Downscroll':
 						daValue = ClientPrefs.downScroll;
 					case 'Middlescroll':

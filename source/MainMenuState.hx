@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.keyboard.FlxKey;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -34,8 +35,10 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = ['story_mode', 'freeplay', 'bonus', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if switch 'donate', #end 'options'];
 
 	var magenta:FlxSprite;
+	var bg:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
+	var debugKeys:Array<FlxKey>;
 
 	override function create()
 	{
@@ -58,6 +61,12 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
+
+		camFollow = new FlxObject(0, 0, 1, 1);
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		add(camFollow);
+		add(camFollowPos);
+
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
@@ -66,11 +75,6 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-
-		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollowPos = new FlxObject(0, 0, 1, 1);
-		add(camFollow);
-		add(camFollowPos);
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
 		magenta.scrollFactor.set(0, yScroll);
@@ -85,6 +89,8 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
+
+		var scale:Float = 0.7;
 
 		var logoBl:FlxSprite;
 
@@ -122,6 +128,8 @@ class MainMenuState extends MusicBeatState
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
 			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
+			menuItem.scale.x = scale;
+			menuItem.scale.y = scale;
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
@@ -129,7 +137,6 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
-			menuItem.scale.set(0.7, 0.7);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
 			menuItem.scrollFactor.set(0, scr);
@@ -226,11 +233,11 @@ class MainMenuState extends MusicBeatState
 					{
 						if (curSelected != spr.ID)
 						{
-							FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+							/*lxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(magenta, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
 							FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
-							FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+							FlxTween.tween(magenta, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});*/
 							FlxTween.tween(spr, {alpha: 0}, 0.3, {
 								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)

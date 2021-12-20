@@ -249,21 +249,27 @@ class ChartingState extends MusicBeatState
 		UI_box.x = FlxG.width / 2 + GRID_SIZE / 2;
 		UI_box.y = 25;
 
-		var tipText:FlxText = new FlxText(UI_box.x, UI_box.y + UI_box.height + 6, 0,
-			"W/S or Mouse Wheel - Change Conductor's strum time
-			\nA or Left/D or Right - Go to the previous/next section
-			\nHold Shift to move 4x faster
-			\nHold Control and click on an arrow to select it
-			\nZ/X - Zoom in/out
-			\n
-			\nEnter - Test your chart
-			\nQ/E - Decrease/Increase Note Sustain Length
-			\nSpace - Stop/Resume song
-			\nR - Reset section\n", 16);
-		tipText.setFormat(Paths.font("GALS.ttf"), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
-		//tipText.borderSize = 2;
-		tipText.scrollFactor.set();
-		add(tipText);
+		var text =
+		"W/S or Mouse Wheel - Change Conductor's strum time
+		\nA or Left/D or Right - Go to the previous/next section
+		\nHold Shift to move 4x faster
+		\nHold Control and click on an arrow to select it
+		\nZ/X - Zoom in/out
+		\n
+		\nEsc - Test your chart inside Chart Editor
+		\nEnter - Play your chart
+		\nQ/E - Decrease/Increase Note Sustain Length
+		\nSpace - Stop/Resume song";
+
+		var tipTextArray:Array<String> = text.split('\n');
+		for (i in 0...tipTextArray.length) {
+			var tipText:FlxText = new FlxText(UI_box.x, UI_box.y + UI_box.height + 8, 0, tipTextArray[i], 16);
+			tipText.y += i * 14;
+			tipText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
+			//tipText.borderSize = 2;
+			tipText.scrollFactor.set();
+			add(tipText);
+		}
 		add(UI_box);
 
 		addSongUI();
@@ -370,6 +376,9 @@ class ChartingState extends MusicBeatState
 			{
 				clearEvents();
 			});
+		clear_events.color = FlxColor.RED;
+		clear_events.label.color = FlxColor.WHITE;
+
 		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
 			{
 				for (sec in 0..._song.notes.length) {
@@ -385,6 +394,8 @@ class ChartingState extends MusicBeatState
 				}
 				updateGrid();
 			});
+		clear_notes.color = FlxColor.RED;
+		clear_notes.label.color = FlxColor.WHITE;
 
 		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 339, 1);
 		stepperBPM.value = Conductor.bpm;

@@ -3,7 +3,7 @@ package;
 import flixel.system.FlxAssets.FlxShader;
 
 
-//vs dave and bambi cool mod
+
 
 class GlitchEffect
 {

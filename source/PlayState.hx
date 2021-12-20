@@ -624,21 +624,16 @@ class PlayState extends MusicBeatState
 					add(bg);
 				case 'oh': //Week 2 2
 					var bg:BGSprite = new BGSprite('oh', -600, -200, 0.9, 0.9);
-					bg.scale.set(3, 3);
+					bg.scale.set(5, 5);
 					add(bg);
-					//if(!ClientPrefs.lowQuality) {
+					if(!ClientPrefs.lowQuality) {
 						// below code assumes shaders are always enabled which is bad
 						var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 						testshader.waveAmplitude = 0.1;
 						testshader.waveFrequency = 5;
 						testshader.waveSpeed = 2;
 						bg.shader = testshader.shader;
-					//}
-					/*var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-					testshader.waveAmplitude = 0.1;
-					testshader.waveFrequency = 5;
-					testshader.waveSpeed = 2;
-					bg.shader = testshader.shader;*/
+					}
 					curbg = bg;
 
 				/*if (SONG.song.toLowerCase() == "portal") {

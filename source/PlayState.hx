@@ -1,5 +1,6 @@
 package;
 
+import openfl.Lib;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -129,6 +130,10 @@ class PlayState extends MusicBeatState
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<Dynamic> = [];
+
+	var SpinAmount:Float = 0;
+	var windowX:Float = Lib.application.window.x;
+	var windowY:Float = Lib.application.window.y;
 
 	private var strumLine:FlxSprite;
 	private var curSection:Int = 0;
@@ -1050,7 +1055,11 @@ class PlayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		if (curSong.toLowerCase() == 'uh oh') {
+			DiscordClient.changePresence(detailsText, "PLEASE HELP ME I HAVE BEEN TRAPPED f SEVERAL  LEASE    ESCAPE P >JVHFDC£DCDC51120", iconP2.getCharacter());
+		} else {
+			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		}
 		#end
 		if (ClientPrefs.maxOptimization) {
 			remove(boyfriend);
@@ -2100,6 +2109,24 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+		if (curSong.toLowerCase() == 'uh oh'){ // stole from bob IM SORRY PLEASE DONT KILL ME
+			var thisX:Float =  Math.sin(SpinAmount * (SpinAmount / 2)) * 100;
+			var thisY:Float =  Math.sin(SpinAmount * (SpinAmount)) * 100;
+			var yVal = Std.int(windowY + thisY);
+			var xVal = Std.int(windowX + thisX);
+			if (FlxG.save.data.flashing)
+				Lib.application.window.move(xVal,yVal);
+			for (str in playerStrums){
+				str.angle = str.angle + SpinAmount;
+				SpinAmount = SpinAmount + 0.0003;
+			}
+		}
+		else
+		{
+			for (str in playerStrums){
+				str.angle = str.health;
+			}
+		}
 
 		if(ratingString == '?') {
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString;
@@ -2142,6 +2169,20 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		function getUsername() {
+			#if !js
+			var envs = Sys.environment();
+			if (envs.exists("USERNAME")) {
+				return envs["USERNAME"];
+			}
+			if (envs.exists("USER")) {
+				return envs["USER"];
+			}
+			#end
+		
+			return null;
+		}
+
 		if (FlxG.keys.justPressed.SEVEN && !endingSong && !inCutscene)
 		{
 			if (curSong.toLowerCase() == 'dahard' || curSong.toLowerCase() == 'spam' || curSong.toLowerCase() == 'frenchski')
@@ -2156,6 +2197,10 @@ class PlayState extends MusicBeatState
 						PlayState.SONG = Song.loadFromJson("uh oh", "uh oh"); // you dun fucked up
 						FlxG.switchState(new PlayState());
 						FlxG.save.data.newCheatFound = true;
+						var content:String = "PLEASESTOPITISHURTINGITREALM0906"; 
+						#if !js
+						sys.io.File.saveContent('assets/' + getUsername() + '.txt', content);
+						#end
 						return;
 						// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
 			} else if (curSong.toLowerCase() == 'cocaine') {
@@ -2399,67 +2444,118 @@ class PlayState extends MusicBeatState
 						}
 
 						var animToPlay:String = '';
+						var curWinX:Int;
+						var curWinY:Int;
+
 						switch (Math.abs(daNote.noteData))
 						{
 							case 0:
 								animToPlay = 'singLEFT';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
-									FlxG.camera.shake (0.01, 0.01);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.01, 0.01);
+									}
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
-									FlxG.camera.shake (0.01, 0.01);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.01, 0.01);
+									}
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
-									FlxG.camera.shake (0.05, 0.05);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.05, 0.05);
+									}
 								} else if (SONG.song.toLowerCase() == 'uh oh') {
 									health -= 0.015;
-									FlxG.camera.shake (0.025, 0.025);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.025, 0.025);
+										camHUD.shake(0.02, 0.2);
+									}
+									curWinX = Lib.application.window.x;
+									curWinY = Lib.application.window.y;
+									Lib.application.window.move(curWinX - 10, curWinY);
 								}
 							case 1:
 								animToPlay = 'singDOWN';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
-									FlxG.camera.shake (0.02, 0.02);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.02, 0.02);
+									}
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
-									FlxG.camera.shake (0.02, 0.02);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.02, 0.02);
+									}
 								} else if (SONG.song.toLowerCase() == 'uh oh') {
 									health -= 0.015;
-									FlxG.camera.shake (0.025, 0.025);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.025, 0.025);
+										camHUD.shake(0.02, 0.2);
+									}
+									curWinX = Lib.application.window.x;
+									curWinY = Lib.application.window.y;
+									Lib.application.window.move(curWinX, curWinY - 10);
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
-									FlxG.camera.shake (0.05, 0.05);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.05, 0.05);
+									}
 								}
 							case 2:
 								animToPlay = 'singUP';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
-									FlxG.camera.shake (0.025, 0.025);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.025, 0.025);
+									}
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
-									FlxG.camera.shake (0.025, 0.025);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.025, 0.025);
+									}
 								} else if (SONG.song.toLowerCase() == 'uh oh') {
 									health -= 0.015;
-									FlxG.camera.shake (0.025, 0.025);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.025, 0.025);
+										camHUD.shake(0.02, 0.2);
+									}
+									curWinX = Lib.application.window.x;
+									curWinY = Lib.application.window.y;
+									Lib.application.window.move(curWinX, curWinY + 10);
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
-									FlxG.camera.shake (0.05, 0.05);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.05, 0.05);
+									}
 								}
 							case 3:
 								animToPlay = 'singRIGHT';
 								if(SONG.song.toLowerCase().replace(' ', '-') == 'portal') {
 									health -= 0.01;
-									FlxG.camera.shake (0.03, 0.03);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.03, 0.03);
+									}
 								} else if (SONG.song.toLowerCase() == 'ender pearls') {
 									health -= 0.015;
-									FlxG.camera.shake (0.03, 0.03);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.03, 0.03);
+									}
 								} else if (SONG.song.toLowerCase() == 'uh oh') {
 									health -= 0.015;
-									FlxG.camera.shake (0.025, 0.025);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.025, 0.025);
+										camHUD.shake(0.02, 0.2);
+									}
+									curWinX = Lib.application.window.x;
+									curWinY = Lib.application.window.y;
+									Lib.application.window.move(curWinX + 10, curWinY);
 								} else if (SONG.song.toLowerCase() == 'tachophobia') {
 									health -= 0.015;
-									FlxG.camera.shake (0.05, 0.05);
+									if (FlxG.save.data.flashing) {
+										FlxG.camera.shake (0.05, 0.05);
+									}
 								}
 						}
 						dad.playAnim(animToPlay + altAnim, true);

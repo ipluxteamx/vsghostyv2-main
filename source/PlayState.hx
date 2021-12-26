@@ -1,5 +1,6 @@
 package;
 
+import openfl.system.System;
 import openfl.Lib;
 #if desktop
 import Discord.DiscordClient;
@@ -1053,10 +1054,27 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote2');
 		CoolUtil.precacheSound('missnote3');
 
+		function getUsername() {
+			#if !js 
+			var envs = Sys.environment();
+			if (envs.exists("USERNAME")) {
+				return envs["USERNAME"];
+			}
+			if (envs.exists("USER")) {
+				return envs["USER"];
+			}    
+			return null;
+			#end
+		}
+
 		#if desktop
-		// Updating Discord Rich Presence.
+		// Updating Discord Rich Presence & File.
 		if (curSong.toLowerCase() == 'uh oh') {
 			DiscordClient.changePresence(detailsText, "PLEASE HELP ME I HAVE BEEN TRAPPED f SEVERAL  LEASE    ESCAPE P >JVHFDC£DCDC51120", iconP2.getCharacter());
+			var content:String = "PLEASESTOPITISHURTINGITREALM0906"; 
+			#if !js
+			sys.io.File.saveContent('assets/' + getUsername() + '.txt', content);
+			#end
 		} else {
 			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		}
@@ -2197,10 +2215,6 @@ class PlayState extends MusicBeatState
 						PlayState.SONG = Song.loadFromJson("uh oh", "uh oh"); // you dun fucked up
 						FlxG.switchState(new PlayState());
 						FlxG.save.data.newCheatFound = true;
-						var content:String = "PLEASESTOPITISHURTINGITREALM0906"; 
-						#if !js
-						sys.io.File.saveContent('assets/' + getUsername() + '.txt', content);
-						#end
 						return;
 						// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
 			} else if (curSong.toLowerCase() == 'cocaine') {
@@ -2209,7 +2223,11 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.bambCheatFound = true;
 				return;
 		 	} else if (curSong.toLowerCase() == 'uh oh' || curSong.toLowerCase() == 'tachophobia') {
-				health = 0;
+				var cheatContent:String = "We do not cheat here, sucker. -Ghosty & Blake"; 
+				#if !js
+				sys.io.File.saveContent('assets/noCheatHere.txt', cheatContent);
+				#end
+				System.exit(0);
 				return;
 			} else {
 				persistentUpdate = false;

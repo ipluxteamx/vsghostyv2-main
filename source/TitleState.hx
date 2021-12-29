@@ -52,6 +52,8 @@ class TitleState extends MusicBeatState
 	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.B, FlxKey.A, FlxKey.M, FlxKey.B, FlxKey.I];
 	var lastKeysPressed:Array<FlxKey> = [];
 
+	var funValue = FlxG.random.int(0, 1);
+
 	override public function create():Void
 	{
 		#if (polymod && !html5)
@@ -84,7 +86,7 @@ class TitleState extends MusicBeatState
 		swagShader = new ColorSwap();
 		super.create();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('daghost', 'iplux');
 		ClientPrefs.loadPrefs();
 
 		Highscore.load();
@@ -151,7 +153,11 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				if(funValue == 1) {
+					FlxG.sound.playMusic(Paths.music('dOyOuyREELLYTHink_THISWoudlBRINGBEABAKCKYLE'), 0);
+				} else {
+					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				}
 
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
@@ -166,14 +172,25 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
-		logoBl.frames = Paths.getSparrowAtlas('ghosty_logo');
-		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
-		logoBl.animation.addByPrefix('bump', 'logo bumin other edit', 24);
-		logoBl.animation.play('bump');
-		logoBl.updateHitbox();
-		logoBl.screenCenter();
-		// logoBl.color = FlxColor.BLACK;
+		if (funValue == 1) {
+			logoBl = new FlxSprite(-150, -100);
+			logoBl.frames = Paths.getSparrowAtlas('realm0906');
+			logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+			logoBl.animation.addByPrefix('bump', 'logo bumin other edit', 24);
+			logoBl.animation.play('bump');
+			logoBl.updateHitbox();
+			logoBl.screenCenter();
+			// logoBl.color = FlxColor.BLACK;
+		} else {
+			logoBl = new FlxSprite(-150, -100);
+			logoBl.frames = Paths.getSparrowAtlas('ghosty_logo');
+			logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+			logoBl.animation.addByPrefix('bump', 'logo bumin other edit', 24);
+			logoBl.animation.play('bump');
+			logoBl.updateHitbox();
+			logoBl.screenCenter();
+			// logoBl.color = FlxColor.BLACK;
+		}
 
 		swagShader = new ColorSwap();
 		/*if(!FlxG.save.data.psykaEasterEgg || !easterEggEnabled) {
@@ -195,15 +212,27 @@ class TitleState extends MusicBeatState
 		add(logoBl);
 		//logoBl.shader = swagShader.shader;
 
-		titleText = new FlxSprite(100, FlxG.height * 0.8);
-		titleText.frames = Paths.getSparrowAtlas('titleEnter');
-		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
-		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
-		titleText.antialiasing = ClientPrefs.globalAntialiasing;
-		titleText.animation.play('idle');
-		titleText.updateHitbox();
-		// titleText.screenCenter(X);
-		add(titleText);
+		if (funValue == 1) {
+			titleText = new FlxSprite(100, FlxG.height * 0.8);
+			titleText.frames = Paths.getSparrowAtlas('kyle');
+			titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
+			titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
+			titleText.antialiasing = ClientPrefs.globalAntialiasing;
+			titleText.animation.play('idle');
+			titleText.updateHitbox();
+			// titleText.screenCenter(X);
+			add(titleText);
+		} else {
+			titleText = new FlxSprite(100, FlxG.height * 0.8);
+			titleText.frames = Paths.getSparrowAtlas('titleEnter');
+			titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
+			titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
+			titleText.antialiasing = ClientPrefs.globalAntialiasing;
+			titleText.animation.play('idle');
+			titleText.updateHitbox();
+			// titleText.screenCenter(X);
+			add(titleText);
+		}
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
@@ -434,12 +463,21 @@ class TitleState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 2:
-					createCoolText(['Mod by'], -45);
+					if (funValue == 1)
+						createCoolText(['KYLE'], -45);
+					else
+						createCoolText(['Mod by'], -45);
 				// credTextShit.visible = true;
 				case 3:
-					addMoreText('iplux', 45);
-					addMoreText('Thatmomentwhen', 45);
-					addMoreText('ZachEP', 45);
+					if (funValue == 1) {
+						addMoreText('please', 45);
+						addMoreText('listen', 45);
+						addMoreText('to me', 45);
+					} else {
+						addMoreText('iplux', 45);
+						addMoreText('Thatmomentwhen', 45);
+						addMoreText('ZachEP', 45);
+					}
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
 				case 4:

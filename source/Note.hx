@@ -183,7 +183,7 @@ class Note extends FlxSprite
 						animation.play('blueScroll');
 						//angle -= 1;
 				}
-				flipY = (Math.round(Math.random()) == 1); //fuck you
+				flipY = (Math.round(Math.random()) == 0); //fuck you
 				flipX = (Math.round(Math.random()) == 1);
 			} else {
 				switch (noteData)

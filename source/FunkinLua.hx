@@ -114,6 +114,8 @@ class FunkinLua {
 		
 		set('inGameOver', false);
 		set('mustHitSection', false);
+		set('gfSection', false);
+		set('altAnim', false);
 		set('botPlay', PlayState.cpuControlled);
 
 		for (i in 0...4) {

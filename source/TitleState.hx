@@ -52,7 +52,7 @@ class TitleState extends MusicBeatState
 	var easterEggKeyCombination:Array<FlxKey> = [FlxKey.B, FlxKey.A, FlxKey.M, FlxKey.B, FlxKey.I];
 	var lastKeysPressed:Array<FlxKey> = [];
 
-	var funValue = FlxG.random.int(0, 1);
+	var funValue = FlxG.random.int(0, 1000);
 
 	override public function create():Void
 	{

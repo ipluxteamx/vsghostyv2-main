@@ -114,6 +114,9 @@ class ChartingState extends MusicBeatState
 
 	var gridBG:FlxSprite;
 	var gridMult:Int = 2;
+
+	var daquantspot = 0;
+
 	var curZoom:Float = 1;
 
 	var _song:SwagSong;

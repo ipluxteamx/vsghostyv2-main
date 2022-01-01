@@ -403,6 +403,13 @@ class BonusState extends MusicBeatState
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
+
+		CoolUtil.difficultyStuff = [
+			['Easy', '-easy'],
+			['Normal', ''],
+			['Hard', '-hard']
+		];
+
 		changeDiff();
 	}
 

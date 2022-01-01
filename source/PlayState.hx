@@ -247,7 +247,7 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
-	private var luaArray:Array<FunkinLua> = [];
+	public var luaArray:Array<FunkinLua> = [];
 
 	//Achievement shit
 	var keysPressed:Array<Bool> = [false, false, false, false];
@@ -629,17 +629,13 @@ class PlayState extends MusicBeatState
 					bg.scale.set(3, 3);
 					add(bg);
 				case 'oh': //Week 2 2
+					if(!ClientPrefs.lowQuality) {
+						// below code assumes shaders are always enabled which is bad
+						var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
+					}
 					var bg:BGSprite = new BGSprite('oh', -600, -200, 0.9, 0.9);
 					bg.scale.set(5, 5);
 					add(bg);
-					if(!ClientPrefs.lowQuality) {
-						// below code assumes shaders are always enabled which is bad
-						var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-						testshader.waveAmplitude = 0.1;
-						testshader.waveFrequency = 5;
-						testshader.waveSpeed = 2;
-						bg.shader = testshader.shader;
-					}
 					curbg = bg;
 
 				/*if (SONG.song.toLowerCase() == "portal") {
@@ -927,7 +923,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "YOU CHEATER", 32);
 		botplayTxt.setFormat(Paths.font("GALS.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
@@ -936,6 +932,11 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
+
+		var versionShit:FlxText = new FlxText(6, FlxG.height - 24, 0, "Ghosted Engine (based on Psych Engine v" + MainMenuState.psychEngineVersion + ")", 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat(Paths.font("GALS.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
@@ -950,6 +951,7 @@ class PlayState extends MusicBeatState
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+		versionShit.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -4046,6 +4048,7 @@ class PlayState extends MusicBeatState
 				setOnLuas('stepCrochet', Conductor.stepCrochet);
 			}
 			setOnLuas('mustHitSection', SONG.notes[Math.floor(curStep / 16)].mustHitSection);
+			setOnLuas('altAnim', SONG.notes[Math.floor(curStep / 16)].altAnim);
 			// else
 			// Conductor.changeBPM(SONG.bpm);
 		}

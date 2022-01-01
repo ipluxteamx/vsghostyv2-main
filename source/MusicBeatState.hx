@@ -27,6 +27,7 @@ class MusicBeatState extends FlxUIState
 		return PlayerSettings.player1.controls;
 
 	override function create() {
+		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		#if MODS_ALLOWED
 		if(!ClientPrefs.imagesPersist) {
 			Paths.customImagesLoaded.clear();
@@ -35,7 +36,7 @@ class MusicBeatState extends FlxUIState
 		super.create();
 
 		// Custom made Trans out
-		if(!FlxTransitionableState.skipNextTransOut) {
+		if(!skip) {
 			openSubState(new CustomFadeTransition(1, true));
 		}
 		FlxTransitionableState.skipNextTransOut = false;

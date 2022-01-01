@@ -50,6 +50,22 @@ class Note extends FlxSprite
 
 	public var texture(default, set):String = null;
 
+	public var noAnimation:Bool = false;
+	public var hitCausesMiss:Bool = false;
+
+	public var offsetX:Float = 0;
+	public var offsetY:Float = 0;
+	public var offsetAngle:Float = 0;
+	public var multAlpha:Float = 1;
+
+	public var copyX:Bool = true;
+	public var copyY:Bool = true;
+	public var copyAngle:Bool = true;
+	public var copyAlpha:Bool = true;
+
+	public var hitHealth:Float = 0.023;
+	public var missHealth:Float = 0.0475;
+
 	private function set_texture(value:String):String {
 		if(texture != value) {
 			reloadNote('', value);
@@ -80,6 +96,14 @@ class Note extends FlxSprite
 					colorSwap.hue = 0;
 					colorSwap.saturation = 0;
 					colorSwap.brightness = 0;
+					if(isSustainNote) {
+						missHealth = 0.1;
+					} else {
+						missHealth = 0.3;
+					}
+					hitCausesMiss = true;
+				case 'No Animation':
+					noAnimation = true;
 				/*case 'Warning Note':
 					ignoreNote = true;
 					reloadNote('HEAL');
@@ -201,6 +225,8 @@ class Note extends FlxSprite
 						//x += swagWidth * 3;
 						animation.play('redScroll');
 				}
+				flipY = false; //normal ig
+				flipX = false;
 			}
 		}
 

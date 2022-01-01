@@ -1219,7 +1219,7 @@ class ChartingState extends MusicBeatState
 			for (dropDownMenu in blockPressWhileScrolling) {
 				if(dropDownMenu.dropPanel.visible) {
 					blockInput = true;
-					break;
+					break; //ok
 				}
 			}
 		}

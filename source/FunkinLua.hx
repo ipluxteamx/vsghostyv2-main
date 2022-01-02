@@ -1084,6 +1084,20 @@ class ModchartSprite extends FlxSprite
 	public var isInFront:Bool = false;
 }
 
+class ModchartText extends FlxText
+{
+	var lePlayState:PlayState = null;
+	public var wasAdded:Bool = false;
+	public function new(x:Float, y:Float, text:String, width:Float)
+	{
+		super(x, y, width, text, 16);
+		setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		cameras = [lePlayState.camHUD];
+		scrollFactor.set();
+		borderSize = 2;
+	}
+}
+
 class DebugLuaText extends FlxText
 {
 	private var disableTime:Float = 6;

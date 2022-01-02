@@ -1795,7 +1795,7 @@ class ChartingState extends MusicBeatState
 
 			if(note.noteData < 0) {
 				var daText:AttachedFlxText = new AttachedFlxText(0, 0, 400, 'Event: ' + note.eventName + ' (' + Math.floor(note.strumTime) + ' ms)' + '\nValue 1: ' + note.eventVal1 + '\nValue 2: ' + note.eventVal2, 12);
-				daText.setFormat(Paths.font("GALS.ttf"), 12, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				daText.setFormat(Paths.font("vcr.ttf"), 12, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 				daText.xAdd = -410;
 				daText.borderSize = 1;
 				curRenderedNoteType.add(daText);
@@ -1807,7 +1807,7 @@ class ChartingState extends MusicBeatState
 					if(typeInt == null) theType = '?';
 
 					var daText:AttachedFlxText = new AttachedFlxText(0, 0, 100, theType, 24);
-					daText.setFormat(Paths.font("GALS.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					daText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					daText.xAdd = -32;
 					daText.yAdd = 6;
 					daText.borderSize = 1;

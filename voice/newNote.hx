@@ -12,7 +12,6 @@ using StringTools;
 
 class Note extends FlxSprite
 {
-	var lePlayState:PlayState = null;
 	public var strumTime:Float = 0;
 
 	public var mustPress:Bool = false;
@@ -45,18 +44,12 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	private var notetolookfor = 0;
-
+	// Lua shit
 	public var noteSplashDisabled:Bool = false;
 	public var noteSplashTexture:String = null;
 	public var noteSplashHue:Float = 0;
 	public var noteSplashSat:Float = 0;
 	public var noteSplashBrt:Float = 0;
-
-	public var texture(default, set):String = null;
-
-	public var noAnimation:Bool = false;
-	public var hitCausesMiss:Bool = false;
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
@@ -70,6 +63,11 @@ class Note extends FlxSprite
 
 	public var hitHealth:Float = 0.023;
 	public var missHealth:Float = 0.0475;
+
+	public var texture(default, set):String = null;
+
+	public var noAnimation:Bool = false;
+	public var hitCausesMiss:Bool = false;
 	public var distance:Float = 2000;//plan on doing scroll directions soon -bb
 
 	private function set_texture(value:String):String {
@@ -89,16 +87,9 @@ class Note extends FlxSprite
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
 				case 'Hurt Note':
-					ignoreNote = true;
+					ignoreNote = mustPress;
 					reloadNote('HURT');
 					noteSplashTexture = 'HURTnoteSplashes';
-					colorSwap.hue = 0;
-					colorSwap.saturation = 0;
-					colorSwap.brightness = 0;
-				case 'Heal Note':
-					ignoreNote = true;
-					reloadNote('HEAL');
-					noteSplashTexture = 'HEALnoteSplashes';
 					colorSwap.hue = 0;
 					colorSwap.saturation = 0;
 					colorSwap.brightness = 0;
@@ -112,13 +103,6 @@ class Note extends FlxSprite
 					noAnimation = true;
 				case 'GF Sing':
 					gfNote = true;
-				/*case 'Warning Note':
-					ignoreNote = true;
-					reloadNote('HEAL');
-					noteSplashTexture = 'HEALnoteSplashes';
-					colorSwap.hue = 0;
-					colorSwap.saturation = 0;
-					colorSwap.brightness = 0;*/
 			}
 			noteType = value;
 		}
@@ -165,37 +149,9 @@ class Note extends FlxSprite
 						animToPlay = 'green';
 					case 3:
 						animToPlay = 'red';
-
-					//flipY = (Math.round(Math.random()) == 0); //fuck you
-					//flipX = (Math.round(Math.random()) == 1);
 				}
 				animation.play(animToPlay + 'Scroll');
 			}
-
-			switch (noteData)
-			{
-				case 0:
-					//x += swagWidth * 3;
-					animation.play('greenScroll');
-					//angle += 1;
-				case 1:
-					//x += swagWidth / 1;
-					animation.play('redScroll');
-					//angle -= 1;
-				case 2:
-					//x += swagWidth * 2;
-					animation.play('purpleScroll');
-					//angle += 1;
-				case 3:
-					//x += swagWidth / 2;
-					animation.play('blueScroll');
-					//angle -= 1;
-			}
-
-			/*if (PlayState.SONG.song.toLowerCase() == "ender pearls" || PlayState.SONG.song.toLowerCase() == "tachophobia" || PlayState.SONG.song.toLowerCase() == "uh oh") {
-				flipY = (Math.round(Math.random()) == 0); //fuck you
-				flipX = (Math.round(Math.random()) == 1);
-			}*/
 		}
 
 		// trace(prevNote);
@@ -243,10 +199,11 @@ class Note extends FlxSprite
 				}
 
 				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.05;
-				if(lePlayState != null)
+				if(PlayState.instance != null)
 				{
-					prevNote.scale.y *= lePlayState.songSpeed;
+					prevNote.scale.y *= PlayState.instance.songSpeed;
 				}
+
 				if(PlayState.isPixelStage) {
 					prevNote.scale.y *= 1.19;
 				}
@@ -309,7 +266,9 @@ class Note extends FlxSprite
 		}
 		if(isSustainNote) {
 			scale.y = lastScaleY;
-			//scale.y *= 0.75;
+			if(ClientPrefs.keSustains) {
+				scale.y *= 0.75;
+			}
 		}
 		updateHitbox();
 

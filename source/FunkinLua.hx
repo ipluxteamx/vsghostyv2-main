@@ -34,7 +34,7 @@ class FunkinLua {
 	#end
 
 	var lePlayState:PlayState = null;
-	var scriptName:String = '';
+	public var scriptName:String = '';
 	var gonnaClose:Bool = false;
 
 	public var accessedProps:Map<String, Dynamic> = null;
@@ -847,7 +847,7 @@ class FunkinLua {
 		Lua_helper.add_callback(lua, "startVideo", function(videoFile:String) {
 			#if VIDEOS_ALLOWED
 			if(FileSystem.exists(Paths.modsVideo(videoFile))) {
-				lePlayState.videoIntro(videoFile);
+				lePlayState.startVideo(videoFile);
 			} else {
 				luaTrace('Video file not found: ' + videoFile);
 			}

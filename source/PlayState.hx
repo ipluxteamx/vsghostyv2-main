@@ -1169,7 +1169,9 @@ class PlayState extends MusicBeatState
 					boyfriendMap.set(newCharacter, newBoyfriend);
 					boyfriendGroup.add(newBoyfriend);
 					startCharacterPos(newBoyfriend);
+					newBoyfriend.alpha = 0.00001;
 					newBoyfriend.visible = false;
+					startCharacterLua(newBoyfriend.curCharacter);
 				}
 
 			case 1:
@@ -1178,7 +1180,9 @@ class PlayState extends MusicBeatState
 					dadMap.set(newCharacter, newDad);
 					dadGroup.add(newDad);
 					startCharacterPos(newDad);
+					newDad.alpha = 0.00001;
 					newDad.visible = false;
+					startCharacterLua(newDad.curCharacter);
 				}
 
 			case 2:
@@ -1188,10 +1192,39 @@ class PlayState extends MusicBeatState
 					gfMap.set(newCharacter, newGf);
 					gfGroup.add(newGf);
 					startCharacterPos(newGf);
+					newGf.alpha = 0.00001;
 					newGf.visible = false;
+					startCharacterLua(newGf.curCharacter);
 				}
 		}
 	}
+
+	function startCharacterLua(name:String)
+	{
+		#if LUA_ALLOWED
+		var doPush:Bool = false;
+		var luaFile:String = 'characters/' + name + '.lua';
+		if(FileSystem.exists(Paths.mods(luaFile))) {
+			luaFile = Paths.mods(luaFile);
+			doPush = true;
+		} else {
+			luaFile = Paths.getPreloadPath(luaFile);
+			if(FileSystem.exists(luaFile)) {
+				doPush = true;
+			}
+		}
+		
+		if(doPush)
+		{
+			for (lua in luaArray)
+			{
+				if(lua.scriptName == luaFile) return;
+			}
+			luaArray.push(new FunkinLua(luaFile));
+		}
+		#end
+	}
+
 	function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
 		if(gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
 			char.setPosition(GF_X, GF_Y);
@@ -1200,7 +1233,7 @@ class PlayState extends MusicBeatState
 		char.y += char.positionArray[1];
 	}
 
-	public function videoIntro(name:String):Void {
+	public function startVideo(name:String):Void {
 		#if VIDEOS_ALLOWED
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.mods('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
@@ -1225,22 +1258,31 @@ class PlayState extends MusicBeatState
 			inCutscene = true;
 			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 			bg.scrollFactor.set();
+			bg.cameras = [camHUD];
 			add(bg);
 
 			(new FlxVideo(fileName)).finishCallback = function() {
 				remove(bg);
-				startCountdown();
+				if(endingSong) {
+					endSong();
+				} else {
+					startCountdown();
+				}
 			}
 			return;
 		} else {
 			FlxG.log.warn('Couldnt find video file: ' + fileName);
 		}
 		#end
-		startCountdown();
+		if(endingSong) {
+			endSong();
+		} else {
+			startCountdown();
+		}
 	}
 
 	var dialogueCount:Int = 0;
-	//You don't have to add a song, just saying. You can just do "dialogueIntro(dialogueJson);" and it should work
+	//You don't have to add a song, just saying. You can just do "startDialogue(dialogueJson);" and it should work
 	public function startDialogue(dialogueFile:DialogueFile, ?song:String = null):Void
 	{
 		// TO DO: Make this more flexible, maybe?
@@ -1251,12 +1293,21 @@ class PlayState extends MusicBeatState
 			var doof:DialogueBoxPsych = new DialogueBoxPsych(dialogueFile, song);
 			doof.scrollFactor.set();
 			doof.finishThing = startCountdown;
+			if(endingSong) {
+				doof.finishThing = endSong;
+			} else {
+				doof.finishThing = startCountdown;
+			}
 			doof.nextDialogueThing = startNextDialogue;
 			doof.cameras = [camHUD];
 			add(doof);
 		} else {
 			FlxG.log.warn('Your dialogue file is badly formatted!');
-			startCountdown();
+			if(endingSong) {
+				endSong();
+			} else {
+				startCountdown();
+			}
 		}
 	}
 
@@ -1350,6 +1401,11 @@ class PlayState extends MusicBeatState
 	var startTimer:FlxTimer;
 	var finishTimer:FlxTimer = null;
 	var perfectMode:Bool = false;
+
+	// For being able to mess with the sprites on Lua
+	public var countdownReady:FlxSprite;
+	public var countdownSet:FlxSprite;
+	public var countdownGo:FlxSprite;
 
 	public function startCountdown():Void
 	{
